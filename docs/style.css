@@ -213,24 +213,6 @@ button {
   background: var(--accent);
 }
 
-.sidebar-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 45;
-  display: block;
-  visibility: hidden;
-  border: 0;
-  background: rgba(12, 15, 13, 0.42);
-  cursor: default;
-  opacity: 0;
-  transition: opacity 180ms ease, visibility 180ms ease;
-}
-
-.sidebar-backdrop.visible {
-  visibility: visible;
-  opacity: 1;
-}
-
 .page-shell {
   min-height: 100vh;
 }
@@ -369,10 +351,6 @@ button {
   width: 100%;
 }
 
-body.sidebar-open {
-  overflow: hidden;
-}
-
 @media (min-width: 760px) {
   .paper-name {
     font-size: 4.25rem;
@@ -384,10 +362,6 @@ body.sidebar-open {
 }
 
 @media (min-width: 1180px) {
-  .sidebar-backdrop {
-    display: none;
-  }
-
   .paper-name {
     font-size: 5rem;
   }
