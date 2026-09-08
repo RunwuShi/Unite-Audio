@@ -71,6 +71,9 @@
               LATENT FLOW MATCHING FOR TEXT-TO-AUDIO GENERATION
             </span>
           </h1>
+          <div class="paper-actions" aria-label="Paper links">
+            <span class="paper-action" aria-disabled="true">arXiv</span>
+          </div>
         </div>
       </section>
 
@@ -105,6 +108,7 @@
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
       const sidebarLinks = [...document.querySelectorAll(".sidebar-link")];
+      const desktopSidebar = window.matchMedia("(min-width: 1180px)");
 
       const savedTheme = localStorage.getItem("unite-audio-theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -123,13 +127,19 @@
       }
 
       function setSidebar(open) {
+        const isDesktop = desktopSidebar.matches;
         sidebar.classList.toggle("open", open);
-        sidebarBackdrop.classList.toggle("visible", open);
+        sidebarBackdrop.classList.toggle("visible", open && !isDesktop);
         sidebarToggle.setAttribute("aria-expanded", String(open));
-        body.classList.toggle("sidebar-open", open);
+        sidebarToggle.setAttribute(
+          "aria-label",
+          open ? "Close table of contents" : "Open table of contents",
+        );
+        body.classList.toggle("sidebar-open", open && !isDesktop);
       }
 
       updateThemeButton();
+      setSidebar(false);
 
       themeToggle.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
@@ -157,8 +167,14 @@
         link.addEventListener("click", () => {
           sidebarLinks.forEach((item) => item.classList.remove("active"));
           link.classList.add("active");
-          setSidebar(false);
+          if (!desktopSidebar.matches) {
+            setSidebar(false);
+          }
         });
+      });
+
+      desktopSidebar.addEventListener("change", () => {
+        setSidebar(false);
       });
 
       const sections = [...document.querySelectorAll("main section[id]")];

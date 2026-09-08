@@ -95,6 +95,7 @@ button {
 
 .sidebar-toggle {
   left: 22px;
+  z-index: 60;
 }
 
 .theme-toggle {
@@ -106,7 +107,7 @@ button {
   inset: 0 auto 0 0;
   z-index: 50;
   width: min(var(--sidebar-width), 86vw);
-  padding: 24px 18px;
+  padding: 78px 18px 24px;
   overflow-y: auto;
   border-right: 1px solid var(--line);
   background: var(--sidebar-bg);
@@ -270,6 +271,31 @@ button {
   line-height: 1.4;
 }
 
+.paper-actions {
+  display: flex;
+  min-height: 42px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.paper-action {
+  display: inline-flex;
+  width: 118px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
 .section-rule {
   display: grid;
   width: min(calc(100% - 60px), 1100px);
@@ -358,19 +384,8 @@ body.sidebar-open {
 }
 
 @media (min-width: 1180px) {
-  .sidebar {
-    box-shadow: none;
-    transform: translateX(0);
-  }
-
-  .sidebar-toggle,
-  .sidebar-close,
   .sidebar-backdrop {
     display: none;
-  }
-
-  .page-shell {
-    margin-left: var(--sidebar-width);
   }
 
   .paper-name {
