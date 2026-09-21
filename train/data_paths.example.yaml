@@ -1,0 +1,19 @@
+# Copy this file to data_paths.yaml and replace every required path.
+# data_paths.yaml is deliberately ignored by git.
+flan_t5: /models/google/flan-t5-large
+audioset_root: /datasets/AudioSet
+audiosetcaps_captions: /datasets/AudioSetCaps_caption.csv
+audiocaps_root: /datasets/AudioCaps
+audiocaps_manifest: /datasets/AudioCaps/train_metadata.csv
+wavcaps_root: /datasets/WavCaps
+
+# S3 reward/cache dependencies. Leave a key absent only when that reward is disabled.
+clap_checkpoint: /models/630k-audioset-fusion-best.pt
+passt_reference_cache: /caches/audiocaps_train_passt.pt
+vggish_hub_dir: /caches/torch-hub
+vggish_fad_cache: /caches/audiocaps_train_vggish_fad.pt
+vggish_reference_cache: /caches/audiocaps_train_vggish_fad.pt
+panns_repo: /repos/audioldm_eval
+panns_checkpoint_dir: /caches/audioldm_eval/ckpt
+panns_fd_reference_cache: /caches/audiocaps_train_panns_fd_reference_256d.pt
+panns_fd_cache: /caches/audiocaps_train_panns_fd.pt
