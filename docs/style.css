@@ -393,6 +393,10 @@ a.paper-action:hover {
   gap: 14px;
 }
 
+.method-figures-single {
+  grid-template-columns: 1fr;
+}
+
 .method-figure {
   display: grid;
   grid-template-rows: 300px auto;
