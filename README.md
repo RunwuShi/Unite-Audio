@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://runwushi.github.io/Unite-Audio/"><img src="https://img.shields.io/badge/Project%20Page-202421?style=flat&logo=googlechrome&logoColor=white" alt="Project Page" /></a>
   <a href="https://arxiv.org/abs/2609.28206"><img src="https://img.shields.io/badge/arXiv-B31B1B?style=flat&logo=arxiv&logoColor=white" alt="arXiv" /></a>
-  <img src="https://img.shields.io/badge/Hugging%20Face-coming%20soon-FFB000?style=flat&logo=huggingface&logoColor=white" alt="Hugging Face coming soon" />
+  <a href="https://huggingface.co/Runwu/UNITE-AUDIO"><img src="https://img.shields.io/badge/Hugging%20Face-FFB000?style=flat&logo=huggingface&logoColor=white" alt="Hugging Face" /></a>
 </p>
 
 <table>
@@ -47,4 +47,4 @@ python infer.py "Ocean waves crash against a rocky shore" --device mps
 python infer.py "Ocean waves crash against a rocky shore" --decoder default_decoder --steps 16
 ```
 
-Model weights will be released separately.
+The required checkpoints download automatically from [Hugging Face](https://huggingface.co/Runwu/UNITE-AUDIO) on first use and are cached locally in `checkpoints/`.
