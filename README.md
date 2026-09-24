@@ -9,7 +9,7 @@
 <p align="center">
   <img src="docs/assets/fig_total_01.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" />
   <br />
-  <sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub>
+  <strong>UNITE-AUDIO</strong> lets <img src="https://img.shields.io/badge/continuous%20tokenization-C45C97?style=flat" height="20" alt="continuous tokenization" /> and <img src="https://img.shields.io/badge/latent%20flow%20matching-8064B5?style=flat" height="20" alt="latent flow matching" /> learn together through <strong>noisy partial-context prediction</strong>.
 </p>
 
 ## Checkpoints
