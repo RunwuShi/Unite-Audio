@@ -14,6 +14,8 @@
 
 ## Checkpoints
 
+All checkpoints are available on [Hugging Face](https://huggingface.co/RunwuShi/UNITE-AUDIO).
+
 | Checkpoint | Description |
 | --- | --- |
 | Stage 3 Flow Model | The shared text-conditioned latent flow model. |
