@@ -1,5 +1,6 @@
 torch>=2.6,<3
 transformers==4.46.3
 safetensors==0.5.2
+huggingface_hub>=0.27,<1
 sentencepiece==0.2.0
 soundfile==0.13.1

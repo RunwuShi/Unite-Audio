@@ -3,20 +3,23 @@
     "device": "auto",
     "available_devices": ["auto", "cuda", "mps", "cpu"]
   },
+  "checkpoints": {
+    "repo_id": "Runwu/UNITE-AUDIO"
+  },
   "models": {
     "stage3_flow": {
       "name": "Stage 3 Flow Model",
-      "runtime_id": "s3_rl14_ema",
+      "runtime_id": "stage3_flow",
       "checkpoint": "stage3_flow.safetensors"
     },
     "default_decoder": {
       "name": "Default Decoder",
-      "runtime_id": "base",
+      "runtime_id": "default_decoder",
       "checkpoint": "default_decoder.safetensors"
     },
     "spectral_decoder": {
       "name": "Spectral Decoder",
-      "runtime_id": "spectral",
+      "runtime_id": "spectral_decoder",
       "checkpoint": "spectral_decoder.safetensors"
     }
   },

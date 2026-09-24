@@ -50,12 +50,23 @@ def resolve_device(value: str) -> str:
     return "cpu"
 
 
+def download_checkpoint(repo_id: str, filename: str) -> None:
+    from huggingface_hub import hf_hub_download
+
+    hf_hub_download(
+        repo_id=repo_id,
+        filename=filename,
+        local_dir=ROOT.parent / "checkpoints",
+    )
+
+
 def main() -> None:
     args = parse_args()
     config = load_config(args.config)
     runtime = dict(config["runtime"])
     models = dict(config["models"])
     defaults = dict(config["default"])
+    checkpoint_repo = str(config["checkpoints"]["repo_id"])
 
     device = resolve_device(str(args.device or runtime["device"]))
     if device not in runtime["available_devices"]:
@@ -65,6 +76,8 @@ def main() -> None:
     decoder_key = str(args.decoder or defaults["decoder_model"])
     if flow_key not in models or decoder_key not in models:
         raise ValueError("flow and decoder must be defined in config.json")
+    for key in (flow_key, decoder_key):
+        download_checkpoint(checkpoint_repo, str(models[key]["checkpoint"]))
 
     command = [
         sys.executable,

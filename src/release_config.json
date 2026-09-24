@@ -1,0 +1,57 @@
+{
+  "model": {
+    "decoder": {
+      "depth": 12,
+      "head": "patch",
+      "type": "deterministic",
+      "upsample_depths": [
+        1,
+        1
+      ]
+    },
+    "dim_head": 64,
+    "downsample_factor": 4,
+    "dropout": 0.0,
+    "ffn_mult": 4,
+    "flow_inference_timestep_mapping": "power",
+    "flow_inference_timestep_power": 2.0,
+    "flow_inference_timestep_shift": 3.0,
+    "flow_xpred_denom_min": 0.02,
+    "fm_adaln_every": 2,
+    "fm_depth": 18,
+    "fm_dim_head": 64,
+    "fm_ffn_mult": 4,
+    "fm_heads": 8,
+    "fm_hidden_dim": 512,
+    "fm_mmdit_fused_depth": 11,
+    "heads": 8,
+    "hidden_dim": 512,
+    "latent_dim": 64,
+    "latent_norm_eps": 1e-06,
+    "latent_norm_scale": 1.0,
+    "patch_size": 160,
+    "prediction": "x_pred_v_loss",
+    "rope_base": 10000.0,
+    "sample_rate": 16000,
+    "text": {
+      "injection": "mmdit",
+      "local_files_only": true,
+      "max_length": 128,
+      "name_or_path": "google/flan-t5-large",
+      "padding_mode": "zero",
+      "text_dim": 512,
+      "tokenizer_padding": "max_length"
+    },
+    "token_dim": 512,
+    "waveform_scale": 8.0
+  },
+  "sampling": {
+    "cfg_rescale": 0.0,
+    "cfg_strength": 2.0,
+    "prior_steps": 32,
+    "seconds": 10.0,
+    "seed": 1234,
+    "solver": "euler",
+    "wave_steps": 1
+  }
+}

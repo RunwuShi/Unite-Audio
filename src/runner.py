@@ -20,29 +20,8 @@ DEFAULT_TEXT_ENCODER = "google/flan-t5-large"
 TEXT_ENCODER_CACHE = (
     Path.home() / ".cache" / "huggingface" / "hub" / "models--google--flan-t5-large"
 )
-MODELS = ("s3_rl14", "s2_noisy_30ep", "decoder_spectral", "decoder_mid3_gan")
-FLOW_MODELS = {
-    "s2_noisy_30ep": "s2_noisy_30ep",
-    "s3_rl14_ema": "s3_rl14",
-    "s3_rl14_online": "decoder_spectral",
-}
-DECODER_MODELS = {
-    "base": "s3_rl14",
-    "spectral": "decoder_spectral",
-    "mid3_gan": "decoder_mid3_gan",
-}
-PACKAGED_MODELS = {
-    "s2_noisy_30ep": ("s2_noisy_30ep", "base"),
-    "s3_rl14": ("s3_rl14_ema", "base"),
-    "decoder_spectral": ("s3_rl14_online", "spectral"),
-    "decoder_mid3_gan": ("s3_rl14_online", "mid3_gan"),
-}
-MODEL_STATES = {
-    "s3_rl14": "ema_model.safetensors",
-    "s2_noisy_30ep": "ema_model.safetensors",
-    "decoder_spectral": "model.safetensors",
-    "decoder_mid3_gan": "model.safetensors",
-}
+FLOW_MODELS = ("stage3_flow",)
+DECODER_MODELS = ("default_decoder", "spectral_decoder")
 
 
 def parse_args() -> argparse.Namespace:
@@ -56,13 +35,8 @@ def parse_args() -> argparse.Namespace:
         type=int,
         help="use caption N from the bundled 886-item TangoFlux evaluation set",
     )
-    parser.add_argument(
-        "--model",
-        choices=MODELS,
-        help="compatibility shortcut selecting an original packaged pairing",
-    )
-    parser.add_argument("--flow-model", choices=tuple(FLOW_MODELS))
-    parser.add_argument("--decoder-model", choices=tuple(DECODER_MODELS))
+    parser.add_argument("--flow-model", choices=FLOW_MODELS, required=True)
+    parser.add_argument("--decoder-model", choices=DECODER_MODELS, required=True)
     parser.add_argument("--repo", type=Path, default=DEFAULT_REPO)
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--seconds", type=float, default=10.0)
@@ -98,8 +72,7 @@ def load_tangoflux_item(repo: Path, index: int) -> dict[str, Any]:
 def prepare_checkpoint_alias(repo: Path, model: str) -> Path:
     """Expose EMA-only releases through the upstream directory resolver."""
 
-    source_dir = repo / "checkpoints" / model
-    source_state = source_dir / MODEL_STATES[model]
+    source_state = repo / "checkpoints" / f"{model}.safetensors"
     if not source_state.is_file():
         raise FileNotFoundError(f"Unite-Audio checkpoint was not found: {source_state}")
 
@@ -108,13 +81,10 @@ def prepare_checkpoint_alias(repo: Path, model: str) -> Path:
     model_alias = alias_dir / "model.safetensors"
     if not model_alias.exists():
         model_alias.symlink_to(source_state)
-    if source_state.name == "ema_model.safetensors":
-        ema_alias = alias_dir / "ema_model.safetensors"
-        if not ema_alias.exists():
-            ema_alias.symlink_to(source_state)
     config_alias = alias_dir / "config"
     if not config_alias.exists():
-        config_alias.symlink_to(source_dir / "config", target_is_directory=True)
+        config_alias.mkdir()
+        (config_alias / "release_config.json").symlink_to(HERE / "release_config.json")
     return alias_dir
 
 
@@ -144,13 +114,10 @@ def main() -> None:
     entrypoint = repo / "src" / "generate.py"
     if not entrypoint.is_file():
         raise FileNotFoundError(f"Unite-Audio inference entrypoint was not found: {entrypoint}")
-    packaged_flow, packaged_decoder = PACKAGED_MODELS.get(
-        args.model or "s3_rl14", PACKAGED_MODELS["s3_rl14"]
-    )
-    flow_model = args.flow_model or packaged_flow
-    decoder_model = args.decoder_model or packaged_decoder
-    flow_checkpoint_id = FLOW_MODELS[flow_model]
-    decoder_checkpoint_id = DECODER_MODELS[decoder_model]
+    flow_model = args.flow_model
+    decoder_model = args.decoder_model
+    flow_checkpoint_id = flow_model
+    decoder_checkpoint_id = decoder_model
     flow_checkpoint = prepare_checkpoint_alias(repo, flow_checkpoint_id)
     decoder_checkpoint = prepare_checkpoint_alias(repo, decoder_checkpoint_id)
     flow_state = resolve_alias_state(flow_checkpoint)
