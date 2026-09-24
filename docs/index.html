@@ -49,7 +49,8 @@
 
       <nav class="sidebar-nav" aria-label="Page sections">
         <a class="sidebar-link active" href="#home">Home</a>
-        <a class="sidebar-link" href="#caption-audio">Text Caption &amp; Audio</a>
+        <a class="sidebar-link" href="#method">Method</a>
+        <a class="sidebar-link" href="#audio-samples">Audio Samples</a>
       </nav>
     </aside>
 
@@ -60,29 +61,72 @@
             <strong>UNITE-AUDIO:</strong> Joint learning of continuous tokenization and<br />
             latent flow matching for text-to-audio generation
           </h1>
+          <div class="paper-meta">
+            <p class="paper-authors">
+              <a href="https://runwushi.github.io/" target="_blank" rel="noreferrer">Runwu Shi<sup>1</sup></a>,
+              <a href="https://cslikai.cn/" target="_blank" rel="noreferrer">Kai Li<sup>2</sup></a>,
+              Yujin Wang<sup>3</sup>,
+              <a href="https://ydqmkkx.github.io/" target="_blank" rel="noreferrer">Dong Yang<sup>4</sup></a>,
+              Jiahui Li<sup>1</sup>, Jiang Wang<sup>1</sup>,
+              Benjamin Yen<sup>1</sup>, Ashizawa Takeshi<sup>1</sup>,
+              Chunxiang Jin<sup>5</sup>, Kazuhiro Nakadai<sup>1</sup>
+            </p>
+            <p class="paper-affiliations">
+              <span><sup>1</sup>Institute of Science Tokyo</span>
+              <span><sup>2</sup>Tsinghua University</span>
+              <span><sup>3</sup>Wuhan University</span>
+              <span><sup>4</sup>The University of Tokyo</span>
+              <span><sup>5</sup>Ant Group</span>
+            </p>
+          </div>
           <div class="paper-actions" aria-label="Paper links">
-            <span class="paper-action" aria-disabled="true">arXiv</span>
-            <span class="paper-action" aria-disabled="true">Hugging Face</span>
-            <a class="paper-action" href="https://github.com/RunwuShi/Unite-Audio">GitHub</a>
+            <a class="paper-action" href="https://arxiv.org/abs/2609.28206" target="_blank" rel="noreferrer">
+              <img class="paper-action-icon" src="https://cdn.simpleicons.org/arxiv" alt="" aria-hidden="true" />
+              <span>arXiv</span>
+            </a>
+            <a class="paper-action" href="https://github.com/RunwuShi/Unite-Audio" target="_blank" rel="noreferrer">
+              <img class="paper-action-icon github-icon" src="https://cdn.simpleicons.org/github" alt="" aria-hidden="true" />
+              <span>GitHub</span>
+            </a>
+            <span class="paper-action" aria-disabled="true">
+              <img class="paper-action-icon" src="https://cdn.simpleicons.org/huggingface" alt="" aria-hidden="true" />
+              <span>Hugging Face</span>
+            </span>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="caption-audio" aria-labelledby="caption-audio-title">
+      <section class="content-section method-section" id="method" aria-labelledby="method-title">
         <div class="section-heading">
-          <p class="section-index">01</p>
-          <h2 id="caption-audio-title">Text Caption &amp; Audio</h2>
+          <h2 id="method-title">Method</h2>
         </div>
 
-        <div class="samples-stage" id="samplesGrid" aria-label="Text caption and audio examples">
-          <!--
-            Future sample markup:
-            <article class="sample-card">
-              <p class="sample-caption">Text caption</p>
-              <audio controls preload="none" src="audio/example.wav"></audio>
-            </article>
-          -->
+        <div class="method-figures">
+          <figure class="method-figure">
+            <img
+              class="method-figure-image"
+              src="assets/method-overview.png"
+              alt="Comparison of separate two-stage training and the proposed joint single-stage training framework"
+            />
+            <figcaption>Separate two-stage training versus our joint single-stage training.</figcaption>
+          </figure>
+          <figure class="method-figure">
+            <img
+              class="method-figure-image"
+              src="assets/method-details.png"
+              alt="Detailed reconstruction and generation paths in the proposed framework"
+            />
+            <figcaption>Detailed reconstruction and generative training paths in Unite-Audio.</figcaption>
+          </figure>
         </div>
+      </section>
+
+      <section class="content-section audio-section" id="audio-samples" aria-labelledby="audio-samples-title">
+        <div class="section-heading">
+          <h2 id="audio-samples-title">Audio Samples</h2>
+        </div>
+
+        <div class="samples-stage" id="samplesGrid" aria-label="Text caption and audio examples"></div>
       </section>
     </main>
 
@@ -94,6 +138,108 @@
       const themeToggle = document.getElementById("themeToggle");
       const themeIcon = document.getElementById("themeIcon");
       const sidebarLinks = [...document.querySelectorAll(".sidebar-link")];
+      const samplesGrid = document.getElementById("samplesGrid");
+
+      const demoSamples = [
+        [73, "A muffled motorboat engine runs as people laugh and scream while water splashes and sprays."],
+        [143, "Several gunshots followed by a click and glass breaking."],
+        [373, "A typewriter clicks and clacks, a bell rings, and the carriage returns with a clack."],
+        [441, "Ducks quack and birds chirp, followed by a rooster crowing as a crowd talks."],
+        [523, "Several loud pops with people cheering."],
+        [764, "Wind and ocean waves crashing while a chime instrument briefly plays a melody."],
+        [835, "A sneeze followed by sniffling and another sneeze beginning while a baby coos in the background."],
+        [876, "A person gulps, glass taps, liquid shakes and pours, then plastic thumps on paper."],
+        [3, "Clattering of a train is ongoing, a railroad crossing bell rings, and a train horn blows."],
+        [4, "Food sizzling with some knocking and banging followed by a woman speaking."],
+        [6, "An emergency siren ringing with a car horn honking."],
+        [10, "Rolling thunder with lightning strikes."],
+        [18, "An infant crying followed by a man laughing."],
+        [26, "An aircraft engine runs and vibrates, metal spinning and grinding occur, and the engine accelerates and fades into the distance."],
+        [587, "Rain is heard falling."],
+        [38, "Kids laughing then talking, followed by a young man talking as wind blows into a microphone."],
+        [44, "A horn followed by an engine revving."],
+        [51, "A man talking then laughing as ducks quack."],
+        [53, "Continuous digital beeps with a person speaking and a bird chirping in the background."],
+        [57, "Insects trill in the background, while birds chirp and flies buzz."],
+        [60, "A horse gallops then trots on grass as gusts of wind blow and thunderclaps sound in the distance."],
+        [62, "A man and a woman talking while rain falls, followed by a crash of thunder."],
+        [68, "A car door opens as a crow caws and birds chirp, followed by a vehicle driving by in the background."],
+        [72, "Continuous laughter."],
+        [77, "A series of loud metal strikes as liquid drains down a pipe, followed by a metal chain rattling."],
+        [79, "Water splashing as a man laughs."],
+        [88, "Footsteps and a croaking frog."],
+        [466, "Several pops and bursts of fireworks exploding."],
+        [94, "An adult female speaks as a cat meows three times and an electronic device plays in the background."],
+        [97, "A car engine revs and then shuts off."],
+        [104, "A woman speaks followed by a dog barking."],
+        [109, "A dog barks and rustles with some clicking."],
+        [112, "A vehicle engine accelerating and revving."],
+        [131, "A bicycle traveling on dirt and gravel, followed by a man speaking then laughing."],
+        [209, "Typing on a keyboard is ongoing in a quiet environment."],
+        [145, "A crowd chants as an adult male speaks in the foreground and a member of the crowd shouts."],
+        [153, "A police siren going off."],
+        [168, "A horse walks while adults speak and roosters crow in the distance."],
+        [180, "A man and a woman talking, followed by a bell ringing, a cat meowing, and a crowd applauding."],
+        [188, "A cat is meowing in a quiet environment."],
+        [195, "Wind blowing with ducks quacking and birds chirping."],
+        [197, "Insects buzzing as wood lightly shuffles and birds chirp in the distance."],
+        [206, "Nature sounds with birds chirping."],
+        [213, "Water trickling followed by a toilet flushing, then liquid draining through a pipe."],
+        [222, "Distant honks of a train horn with leaves rustling."],
+        [229, "A man speaks as rain pitter-patters and thunder rumbles."],
+        [235, "A man talking then whistling as guitar music plays."],
+        [248, "A train horn honking followed by a subway train running on railroad tracks."],
+        [257, "Waves crash on a beach while the wind blows."],
+        [293, "Ocean waves crash as water trickles, gusts of wind blow, and seagulls squawk in the distance."],
+        [304, "A piano playing as a clock ticks."],
+        [321, "Whistling with distant humming and a girl singing."],
+        [343, "Distant thunder with rain falling, followed by a man speaking loudly."],
+        [352, "A person clapping followed by a dog barking, wood clanking, birds chirping, and gusts of wind."],
+        [360, "Several cats meowing followed by a man singing."],
+        [365, "An emergency siren wailing followed by a large truck engine running idle."],
+        [402, "A man talking during footsteps on leaves as birds chirp in the background."],
+        [429, "A person grunts, followed by footsteps and a pig oinking with a single squeal."],
+        [491, "Music plays in the background as a woman speaks and food fries."],
+        [535, "Church bells ringing as rain pours and wind blows into a microphone."],
+        [599, "An air gun firing rapidly followed by plastic rattling, a young boy talking, and footsteps on grass."],
+        [629, "Birds chirp and sing as rustling and adult speech occur in the foreground and background."],
+        [639, "A power tool drilling as rock music plays."],
+        [707, "A train horn goes off loudly."],
+        [710, "Pigeons cooing and bird wings flapping as footsteps shuffle on paper."],
+        [782, "Horses snorting then neighing as footsteps shuffle and people talk in the background."],
+        [807, "A dog barking and growling as footsteps squeak, followed by a series of metal clicks."],
+        [872, "A band plays horn and string instruments while waves crash nearby."],
+      ];
+
+      demoSamples.sort(([firstId], [secondId]) => {
+        if (firstId === 466) return -1;
+        if (secondId === 466) return 1;
+        return ((firstId * 2654435761) >>> 0) - ((secondId * 2654435761) >>> 0);
+      });
+
+      demoSamples.forEach(([id, caption]) => {
+        const card = document.createElement("article");
+        card.className = "sample-card";
+
+        const text = document.createElement("p");
+        text.className = "sample-caption";
+        text.textContent = caption;
+
+        const spectrum = document.createElement("img");
+        spectrum.className = "sample-spectrum";
+        spectrum.src = `spectrograms/output_${id}.jpg`;
+        spectrum.alt = `Spectrogram for: ${caption}`;
+        spectrum.loading = "lazy";
+        spectrum.decoding = "async";
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.preload = "metadata";
+        audio.src = `audio/output_${id}.wav`;
+
+        card.append(text, spectrum, audio);
+        samplesGrid.append(card);
+      });
 
       const savedTheme = localStorage.getItem("unite-audio-theme");
       const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;

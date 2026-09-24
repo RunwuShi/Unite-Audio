@@ -11,6 +11,7 @@
   --accent: #5b5b59;
   --accent-soft: #e9e9e6;
   --warm: #b75e35;
+  --link: #245fa8;
   --sidebar-bg: #fafbf8;
   --sidebar-hover: #ebefea;
   --shadow: 0 12px 32px rgba(28, 35, 31, 0.11);
@@ -47,6 +48,7 @@ body.dark-mode {
   --accent: #c5c5c2;
   --accent-soft: #2d2d2b;
   --warm: #c9a474;
+  --link: #78aee8;
   --sidebar-bg: #1a1c1b;
   --sidebar-hover: #272a28;
   --shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
@@ -219,15 +221,15 @@ button {
 
 .hero {
   display: grid;
-  min-height: 290px;
+  min-height: 0;
   place-items: center;
-  padding: 56px 30px 26px;
+  padding: 56px 30px 12px;
 }
 
 .hero-inner {
   display: grid;
   width: min(100%, 1100px);
-  gap: 20px;
+  gap: 14px;
   text-align: center;
 }
 
@@ -246,6 +248,54 @@ button {
   font-weight: 700;
 }
 
+.paper-meta {
+  display: grid;
+  gap: 4px;
+  width: min(100%, 1020px);
+  margin: 0 auto;
+}
+
+.paper-authors,
+.paper-affiliations {
+  margin: 0;
+}
+
+.paper-authors {
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.paper-authors a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.paper-authors a:hover,
+.paper-authors a:focus-visible {
+  text-decoration-thickness: 2px;
+}
+
+.paper-authors sup,
+.paper-affiliations sup {
+  margin-left: 1px;
+  font-size: 0.68em;
+  line-height: 0;
+}
+
+.paper-affiliations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px 14px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
 .paper-actions {
   display: flex;
   min-height: 42px;
@@ -261,6 +311,7 @@ button {
   padding: 0 20px;
   align-items: center;
   justify-content: center;
+  gap: 9px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--surface);
@@ -270,6 +321,17 @@ button {
   line-height: 1;
   text-decoration: none;
   user-select: none;
+}
+
+.paper-action-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  object-fit: contain;
+}
+
+body.dark-mode .github-icon {
+  filter: invert(1);
 }
 
 a.paper-action {
@@ -312,30 +374,103 @@ a.paper-action:hover {
   font-weight: 700;
 }
 
+.method-section {
+  min-height: 0;
+  padding-top: 14px;
+  padding-bottom: 28px;
+}
+
+.method-section .section-heading {
+  margin-bottom: 16px;
+}
+
+.method-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 860px);
+  margin: 0 auto;
+  align-items: start;
+  gap: 14px;
+}
+
+.method-figure {
+  display: grid;
+  grid-template-rows: 300px auto;
+  gap: 8px;
+  margin: 0;
+}
+
+.method-figure-image {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.method-figure figcaption {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.audio-section {
+  padding-top: 10px;
+}
+
 .samples-stage {
-  min-height: 260px;
-  border: 1px dashed var(--line-strong);
-  border-radius: 8px;
-  background: color-mix(in srgb, var(--surface) 56%, transparent);
-  transition: border-color 180ms ease, background-color 180ms ease;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
 
 .sample-card {
   display: grid;
-  gap: 16px;
-  padding: 20px;
+  grid-template-rows: minmax(3.1em, auto) auto auto;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
+  box-shadow: 0 5px 18px rgba(28, 35, 31, 0.06);
 }
 
 .sample-caption {
   margin: 0;
   color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sample-spectrum {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4.2 / 1;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #181716;
+  object-fit: cover;
 }
 
 .sample-card audio {
+  display: block;
   width: 100%;
+  height: 38px;
+  color-scheme: light;
+}
+
+body.dark-mode .sample-card {
+  box-shadow: none;
+}
+
+body.dark-mode .sample-card audio {
+  color-scheme: dark;
 }
 
 @media (min-width: 760px) {
@@ -366,8 +501,8 @@ a.paper-action:hover {
   }
 
   .hero {
-    min-height: 320px;
-    padding: 76px 20px 28px;
+    min-height: 0;
+    padding: 76px 20px 16px;
   }
 
   .paper-title {
@@ -377,6 +512,15 @@ a.paper-action:hover {
 
   .paper-actions {
     gap: 8px;
+  }
+
+  .paper-authors {
+    font-size: 0.78rem;
+  }
+
+  .paper-affiliations {
+    gap: 2px 10px;
+    font-size: 0.68rem;
   }
 
   .paper-action {
@@ -404,7 +548,29 @@ a.paper-action:hover {
   }
 
   .samples-stage {
-    min-height: 220px;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .sample-card {
+    grid-template-rows: auto auto auto;
+    padding: 14px;
+  }
+
+  .sample-caption {
+    min-height: 0;
+  }
+
+  .method-figures {
+    grid-template-columns: 1fr;
+  }
+
+  .method-figure {
+    grid-template-rows: 240px auto;
+  }
+
+  .method-figure-image {
+    height: 240px;
   }
 }
 
