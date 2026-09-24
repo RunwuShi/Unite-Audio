@@ -9,9 +9,7 @@
 <p align="center">
   <img src="docs/assets/fig_total_01.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" />
   <br />
-  <strong>UNITE-AUDIO</strong> lets <em>continuous tokenization</em> + <em>latent flow matching</em> learn together through noisy partial-context prediction.
-  <br />
-  This joint objective strikes a better balance between semantic fidelity and reconstruction quality.
+  <strong>UNITE-AUDIO</strong> lets <em>continuous tokenization</em> + <em>latent flow matching</em> learn together through noisy partial-context prediction. This joint objective strikes a better balance between semantic fidelity and reconstruction quality.
 </p>
 
 ## Checkpoints
