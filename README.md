@@ -1,7 +1,7 @@
 # **UNITE-AUDIO**: Joint learning of continuous tokenization and latent flow matching for text-to-audio generation
 
 <p align="center">
-  <a href="https://runwushi.github.io/Unite-Audio/"><img src="https://img.shields.io/badge/Project%20Page-202421?style=flat&logo=googlechrome&logoColor=white" alt="Project Page" /></a>
+  <a href="https://runwushi.github.io/Unite-Audio/"><img src="https://img.shields.io/badge/Demo%20Page-202421?style=flat&logo=googlechrome&logoColor=white" alt="Demo Page" /></a>
   <a href="https://arxiv.org/abs/2609.28206"><img src="https://img.shields.io/badge/arXiv-B31B1B?style=flat&logo=arxiv&logoColor=white" alt="arXiv" /></a>
   <a href="https://huggingface.co/RunwuShi/UNITE-AUDIO"><img src="https://img.shields.io/badge/Hugging%20Face-FFB000?style=flat&logo=huggingface&logoColor=white" alt="Hugging Face" /></a>
 </p>
