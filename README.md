@@ -8,8 +8,7 @@
 
 <table>
   <tr>
-    <td align="center"><img src="docs/assets/method-overview.png" height="280" alt="Separate two-stage training versus Unite-Audio joint training" /><br /><sub>Separate two-stage training versus our joint single-stage training.</sub></td>
-    <td align="center"><img src="docs/assets/method-details.png" height="280" alt="UNITE-AUDIO reconstruction and generative training paths" /><br /><sub>Reconstruction and generative training paths in UNITE-AUDIO.</sub></td>
+    <td align="center"><img src="docs/assets/method-overview.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" /><br /><sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub></td>
   </tr>
 </table>
 
