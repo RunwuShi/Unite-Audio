@@ -13,14 +13,15 @@
   </tr>
 </table>
 
-## Decoder Checkpoints
+## Checkpoints
 
-Both variants use the same Stage 3 Flow Model.
+| Checkpoint | Description |
+| --- | --- |
+| Stage 3 Flow Model | The shared text-conditioned latent flow model. |
+| Default Decoder | The decoder checkpoint used for the reported paper metrics. |
+| Spectral Decoder | An alternative decoder with more stable high-frequency detail. |
 
-| Decoder checkpoint | Intended use | Notes |
-| --- | --- | --- |
-| Default Decoder | Reproducing the paper results | The decoder checkpoint used for the reported paper metrics. |
-| Spectral Decoder | General inference | More stable high-frequency detail; used by default in `inference/config.json`. |
+The default setting uses the Stage 3 Flow Model with the Spectral Decoder.
 
 ## Inference
 
