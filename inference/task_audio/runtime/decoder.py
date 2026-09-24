@@ -170,4 +170,3 @@ class DeterministicWaveDecoder(nn.Module):
 
     def forward(self, z: Tensor, original_len: int | None = None) -> Tensor:
         return self.decoder(z, original_len=original_len)
-
