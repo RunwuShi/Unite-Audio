@@ -7,8 +7,8 @@
 Hugging Face (coming soon)
 
 <p align="center">
-  <img src="docs/assets/method-overview.png" width="48%" alt="Separate two-stage training versus Unite-Audio joint training" />
-  <img src="docs/assets/method-details.png" width="48%" alt="UNITE-AUDIO reconstruction and generative training paths" />
+  <img src="docs/assets/method-overview.png" height="280" alt="Separate two-stage training versus Unite-Audio joint training" />
+  <img src="docs/assets/method-details.png" height="280" alt="UNITE-AUDIO reconstruction and generative training paths" />
 </p>
 
 ## Inference
