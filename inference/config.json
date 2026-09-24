@@ -4,7 +4,7 @@
     "available_devices": ["auto", "cuda", "mps", "cpu"]
   },
   "checkpoints": {
-    "repo_id": "Runwu/UNITE-AUDIO"
+    "repo_id": "RunwuShi/UNITE-AUDIO"
   },
   "models": {
     "stage3_flow": {
