@@ -397,6 +397,11 @@ a.paper-action:hover {
   grid-template-columns: 1fr;
 }
 
+.method-figures-single .method-figure {
+  width: min(100%, 780px);
+  margin: 0 auto;
+}
+
 .method-figure {
   display: grid;
   grid-template-rows: 300px auto;
