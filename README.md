@@ -13,7 +13,7 @@
   </tr>
 </table>
 
-## Checkpoints
+**Checkpoints**
 
 | Checkpoint | Description |
 | --- | --- |
