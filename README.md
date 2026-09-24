@@ -6,11 +6,11 @@
   <a href="https://huggingface.co/RunwuShi/UNITE-AUDIO"><img src="https://img.shields.io/badge/Hugging%20Face-FFB000?style=flat&logo=huggingface&logoColor=white" alt="Hugging Face" /></a>
 </p>
 
-<table>
-  <tr>
-    <td align="center"><img src="docs/assets/fig_total_01.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" /><br /><sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub></td>
-  </tr>
-</table>
+<p align="center">
+  <img src="docs/assets/fig_total_01.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" />
+  <br />
+  <sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub>
+</p>
 
 ## Checkpoints
 
