@@ -9,7 +9,7 @@
 <table>
   <tr>
     <td align="center"><img src="docs/assets/method-overview.png" height="280" alt="Separate two-stage training versus Unite-Audio joint training" /><br /><sub>Separate two-stage training versus our joint single-stage training.</sub></td>
-    <td align="center"><img src="docs/assets/method-details.png" height="280" alt="UNITE-AUDIO reconstruction and generative training paths" /><br /><sub>Detailed reconstruction and generative training paths in UNITE-AUDIO.</sub></td>
+    <td align="center"><img src="docs/assets/method-details.png" height="280" alt="UNITE-AUDIO reconstruction and generative training paths" /><br /><sub>Reconstruction and generative training paths in UNITE-AUDIO.</sub></td>
   </tr>
 </table>
 
