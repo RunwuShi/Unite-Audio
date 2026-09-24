@@ -229,7 +229,9 @@
         spectrum.className = "sample-spectrum";
         spectrum.src = `spectrograms/output_${id}.jpg`;
         spectrum.alt = `Spectrogram for: ${caption}`;
-        spectrum.loading = "lazy";
+        // The complete spectrogram set is about 1 MB, so preloading it keeps
+        // the visual trace instant as visitors browse through the samples.
+        spectrum.loading = "eager";
         spectrum.decoding = "async";
 
         const audio = document.createElement("audio");
