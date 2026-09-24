@@ -2,14 +2,27 @@
 
 Official project page: https://runwushi.github.io/Unite-Audio/
 
-This repository contains the UNITE-AUDIO inference runtime for CUDA and Apple
-Silicon (MPS), together with the project website in `docs/`.
+## Inference
 
-Model weights will be released separately. The release will provide two
-official inference settings:
+Install the dependencies:
 
-- `default`: S3 Flow EMA + Base Decoder, used for the paper's main results.
-- `spectral-stable`: S3 Flow EMA + Spectral Decoder, for more stable
-  high-frequency detail.
+```bash
+pip install -r requirements.txt
+```
 
-See `inference/` for the runtime and platform-specific setup instructions.
+Generate audio with the default setting:
+
+```bash
+python infer.py "Ocean waves crash against a rocky shore"
+```
+
+The default uses the Stage 3 Flow Model and Spectral Decoder. Available
+devices, models, checkpoint definitions, and default sampling settings are all
+listed in `config.json`. Command-line arguments override the configuration:
+
+```bash
+python infer.py "Ocean waves crash against a rocky shore" --device mps
+python infer.py "Ocean waves crash against a rocky shore" --decoder default_decoder --steps 16
+```
+
+Model weights will be released separately.

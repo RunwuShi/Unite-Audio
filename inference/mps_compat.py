@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Apply narrow release-runtime compatibility fixes, then run upstream CLI."""
+"""Apply runtime compatibility fixes, then run the inference CLI."""
 
 from __future__ import annotations
 

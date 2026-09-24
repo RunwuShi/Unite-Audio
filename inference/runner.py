@@ -7,13 +7,14 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_REPO = HERE.parents[1]
+DEFAULT_REPO = HERE.parent
 DEFAULT_TEXT_ENCODER = "google/flan-t5-large"
 TEXT_ENCODER_CACHE = (
     Path.home() / ".cache" / "huggingface" / "hub" / "models--google--flan-t5-large"
@@ -45,7 +46,7 @@ MODEL_STATES = {
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate Unite-Audio samples locally on Apple Silicon"
+        description="Run the UNITE-AUDIO inference runtime."
     )
     source = parser.add_mutually_exclusive_group(required=True)
     source.add_argument("--caption", help="text condition to synthesize")
@@ -70,9 +71,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=1234)
     parser.add_argument(
         "--device",
-        choices=("mps", "cpu"),
+        choices=("cuda", "mps", "cpu"),
         default="mps",
-        help="MPS uses the Apple GPU; CPU is a slow compatibility fallback",
+        help="select CUDA, MPS, or CPU",
     )
     parser.add_argument(
         "--text-encoder",
@@ -168,13 +169,9 @@ def main() -> None:
         if args.output_dir
         else HERE / "outputs" / f"{flow_model}__{decoder_model}_{timestamp}"
     )
-    python = HERE / ".venv" / "bin" / "python"
-    if not python.is_file():
-        raise FileNotFoundError(f"environment not found; run {HERE / 'setup.sh'} first")
-
     command = [
-        str(python),
-        str(HERE / "inference_shim.py"),
+        sys.executable,
+        str(HERE / "mps_compat.py"),
         "--checkpoint",
         str(flow_checkpoint),
         "--caption",

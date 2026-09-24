@@ -1,0 +1,32 @@
+{
+  "runtime": {
+    "device": "auto",
+    "available_devices": ["auto", "cuda", "mps", "cpu"]
+  },
+  "models": {
+    "stage3_flow": {
+      "name": "Stage 3 Flow Model",
+      "runtime_id": "s3_rl14_ema",
+      "checkpoint": "stage3_flow.safetensors"
+    },
+    "default_decoder": {
+      "name": "Default Decoder",
+      "runtime_id": "base",
+      "checkpoint": "default_decoder.safetensors"
+    },
+    "spectral_decoder": {
+      "name": "Spectral Decoder",
+      "runtime_id": "spectral",
+      "checkpoint": "spectral_decoder.safetensors"
+    }
+  },
+  "default": {
+    "flow_model": "stage3_flow",
+    "decoder_model": "spectral_decoder",
+    "seconds": 10,
+    "steps": 32,
+    "wave_steps": 1,
+    "cfg_strength": 4.0,
+    "seed": 1234
+  }
+}

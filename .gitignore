@@ -2,8 +2,7 @@
 checkpoints/
 outputs/
 inference/outputs/
-inference/apple_silicon/outputs/
-inference/apple_silicon/.runtime/
+inference/.runtime/
 
 # Python and local tooling
 __pycache__/
