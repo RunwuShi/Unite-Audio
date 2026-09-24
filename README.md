@@ -1,6 +1,15 @@
 # UNITE-AUDIO
 
-Official project page: https://runwushi.github.io/Unite-Audio/
+### Joint learning of continuous tokenization and latent flow matching for text-to-audio generation
+
+[Project Page](https://runwushi.github.io/Unite-Audio/) ·
+[arXiv](https://arxiv.org/abs/2609.28206) ·
+Hugging Face (coming soon)
+
+<p align="center">
+  <img src="docs/assets/method-overview.png" width="48%" alt="Separate two-stage training versus Unite-Audio joint training" />
+  <img src="docs/assets/method-details.png" width="48%" alt="UNITE-AUDIO reconstruction and generative training paths" />
+</p>
 
 ## Inference
 
