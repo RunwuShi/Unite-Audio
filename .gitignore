@@ -1,0 +1,15 @@
+# Model weights and generated audio
+checkpoints/
+outputs/
+inference/outputs/
+inference/apple_silicon/outputs/
+inference/apple_silicon/.runtime/
+
+# Python and local tooling
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+.idea/
+.vscode/
