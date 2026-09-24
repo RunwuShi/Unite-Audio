@@ -14,7 +14,8 @@ from typing import Any
 
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_REPO = HERE.parent
+INFERENCE_ROOT = HERE.parent
+DEFAULT_REPO = INFERENCE_ROOT.parent
 DEFAULT_TEXT_ENCODER = "google/flan-t5-large"
 TEXT_ENCODER_CACHE = (
     Path.home() / ".cache" / "huggingface" / "hub" / "models--google--flan-t5-large"
@@ -102,7 +103,7 @@ def prepare_checkpoint_alias(repo: Path, model: str) -> Path:
     if not source_state.is_file():
         raise FileNotFoundError(f"Unite-Audio checkpoint was not found: {source_state}")
 
-    alias_dir = HERE / ".runtime" / "checkpoints" / model
+    alias_dir = INFERENCE_ROOT / ".runtime" / "checkpoints" / model
     alias_dir.mkdir(parents=True, exist_ok=True)
     model_alias = alias_dir / "model.safetensors"
     if not model_alias.exists():
@@ -140,7 +141,7 @@ def resolve_text_encoder(value: str | None) -> tuple[str, bool]:
 def main() -> None:
     args = parse_args()
     repo = args.repo.expanduser().resolve()
-    entrypoint = repo / "inference" / "generate.py"
+    entrypoint = repo / "inference" / "src" / "generate.py"
     if not entrypoint.is_file():
         raise FileNotFoundError(f"Unite-Audio inference entrypoint was not found: {entrypoint}")
     packaged_flow, packaged_decoder = PACKAGED_MODELS.get(
