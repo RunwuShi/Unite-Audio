@@ -14,8 +14,8 @@ from typing import Any
 
 
 HERE = Path(__file__).resolve().parent
-INFERENCE_ROOT = HERE.parent
-DEFAULT_REPO = INFERENCE_ROOT.parent
+DEFAULT_REPO = HERE.parent
+INFERENCE_ROOT = DEFAULT_REPO / "inference"
 DEFAULT_TEXT_ENCODER = "google/flan-t5-large"
 TEXT_ENCODER_CACHE = (
     Path.home() / ".cache" / "huggingface" / "hub" / "models--google--flan-t5-large"
@@ -141,7 +141,7 @@ def resolve_text_encoder(value: str | None) -> tuple[str, bool]:
 def main() -> None:
     args = parse_args()
     repo = args.repo.expanduser().resolve()
-    entrypoint = repo / "inference" / "src" / "generate.py"
+    entrypoint = repo / "src" / "generate.py"
     if not entrypoint.is_file():
         raise FileNotFoundError(f"Unite-Audio inference entrypoint was not found: {entrypoint}")
     packaged_flow, packaged_decoder = PACKAGED_MODELS.get(

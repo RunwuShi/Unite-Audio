@@ -68,7 +68,7 @@ def main() -> None:
 
     command = [
         sys.executable,
-        str(ROOT / "src" / "runner.py"),
+        str(ROOT.parent / "src" / "runner.py"),
         "--caption",
         args.caption,
         "--flow-model",
