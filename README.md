@@ -8,7 +8,7 @@
 
 <table>
   <tr>
-    <td align="center"><img src="docs/assets/method-overview.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" /><br /><sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub></td>
+    <td align="center"><img src="docs/assets/fig_total_01.png" width="100%" alt="UNITE-AUDIO jointly learns continuous tokenization and latent flow matching" /><br /><sub>UNITE-AUDIO jointly learns continuous tokenization and latent flow matching in a single stage with noisy partial-context prediction.</sub></td>
   </tr>
 </table>
 
