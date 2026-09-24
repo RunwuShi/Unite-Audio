@@ -1,4 +1,0 @@
-wget
-funasr
-random
-pickle

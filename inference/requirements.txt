@@ -1,6 +1,0 @@
-# Install a CUDA-compatible torch and torchaudio build first:
-# https://pytorch.org/get-started/locally/
-transformers==4.46.3
-safetensors==0.5.2
-sentencepiece==0.2.0
-soundfile==0.13.1

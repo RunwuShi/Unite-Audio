@@ -1,4 +1,0 @@
-# Install a CUDA-compatible torch and torchaudio build first.
--r ../inference/requirements.txt
-accelerate
-PyYAML
