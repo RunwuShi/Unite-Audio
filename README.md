@@ -16,13 +16,14 @@
 
 All checkpoints are available on [Hugging Face](https://huggingface.co/RunwuShi/UNITE-AUDIO).
 
-| Checkpoint | Description |
-| --- | --- |
-| Stage 3 Flow Model | The shared text-conditioned latent flow model. |
-| Default Decoder | The decoder checkpoint used for the reported paper metrics. |
-| Spectral Decoder | An alternative decoder with more stable high-frequency detail. |
+| Checkpoint | Parameters | Description |
+| --- | ---: | --- |
+| Stage 3 Flow Model | 117.7M | The shared text-conditioned latent flow model. |
+| Default Decoder | 45.5M | The decoder checkpoint used for the reported paper metrics. |
+| Spectral Decoder | 45.5M | An alternative decoder with more stable high-frequency detail. |
 
 The default setting uses the Stage 3 Flow Model with the Spectral Decoder.
+Parameter counts refer to the released checkpoint modules.
 
 ## Inference
 
