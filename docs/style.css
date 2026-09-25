@@ -279,6 +279,14 @@ button {
   text-decoration-thickness: 2px;
 }
 
+.paper-authors .author-scholar {
+  margin-left: 2px;
+  font-size: 0.82em;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
 .paper-authors sup,
 .paper-affiliations sup {
   margin-left: 1px;
