@@ -50,3 +50,5 @@ python infer.py "Ocean waves crash against a rocky shore" --decoder default_deco
 ```
 
 The required checkpoints download automatically from [Hugging Face](https://huggingface.co/RunwuShi/UNITE-AUDIO) on first use and are cached locally in `checkpoints/`.
+
+The training code is coming soon.
